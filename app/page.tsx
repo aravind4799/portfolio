@@ -1,9 +1,7 @@
 'use client'; 
 
 import React, { useState, useEffect, useRef } from 'react';
-// UPDATED: Removed unused icons that were causing warnings
 import { Github, Linkedin, Code, Calculator, Bot, Building } from 'lucide-react';
-// UPDATED: Imported the Next.js Image component
 import Image from 'next/image';
 
 // =================================================================================
@@ -334,21 +332,18 @@ const About = () => {
         <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">About Me</h2>
         <div className="w-24 h-1 bg-cyan-400 mx-auto mb-12"></div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          <div className="md:col-span-2 text-lg text-gray-300 space-y-4">
-            <p>I&apos;m a passionate Java Full Stack Developer, currently pursuing my Master&apos;s in Computer Science at Purdue University. My journey in tech has taken me from LTIMindtree in India to Hartford Financial Services in the USA, where I&apos;ve specialized in modernizing systems.</p>
-            <p>Beyond the code, I believe music is the shorthand of emotion. It&apos;s the soundtrack to late-night coding sessions and the creative fuel for solving complex problems.</p>
-          </div>
-
+        {/* UPDATED: Changed to a 2-column grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Column: Image and Spotify Player */}
           <div className="w-full flex flex-col items-center gap-6">
             <Image 
-              src="/my_image.jpg" 
+              src="/my_pic.jpeg" 
               alt="Aravind Kumar"
               width={192}
               height={192}
               className="w-48 h-48 rounded-full border-4 border-cyan-400 object-cover shadow-lg shadow-cyan-500/20"
             />
-            
             <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 w-full max-w-sm">
               {loading ? (
                 <div className="text-center text-gray-400">Loading Spotify data...</div>
@@ -369,7 +364,7 @@ const About = () => {
                     <div className="flex items-end h-6 gap-0.5 ml-auto">
                         <span className="w-1 bg-cyan-400 animate-[bounce_1s_ease-in-out_infinite]"></span>
                         <span className="w-1 bg-cyan-400 animate-[bounce_1.2s_ease-in-out_infinite]"></span>
-                        <span className="w-1 bg-cyan-400 animate-[bounce_0.8s_ease_in-out_infinite]"></span>
+                        <span className="w-1 bg-cyan-400 animate-[bounce_0.8s_ease-in-out_infinite]"></span>
                     </div>
                   </div>
                   <div className="w-full bg-gray-600 rounded-full h-1.5 mt-3">
@@ -381,6 +376,13 @@ const About = () => {
               )}
             </div>
           </div>
+          
+          {/* Right Column: Bio */}
+          <div className="text-lg text-gray-300 space-y-4 text-center md:text-left">
+            <p>I&apos;m a passionate Java Full Stack Developer, currently pursuing my Master&apos;s in Computer Science at Purdue University. My journey in tech has taken me from LTIMindtree in India to Hartford Financial Services in the USA, where I&apos;ve specialized in modernizing systems.</p>
+            <p>Beyond the code, I believe music is the shorthand of emotion. It&apos;s the soundtrack to late-night coding sessions and the creative fuel for solving complex problems.</p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -457,3 +459,4 @@ export default function App() {
     </div>
   );
 }
+
