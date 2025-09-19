@@ -1,6 +1,40 @@
-
 import { NextResponse } from 'next/server';
 import querystring from 'querystring';
+
+// =================================================================================
+// TypeScript Interfaces for Spotify API responses
+// =================================================================================
+interface SpotifyArtist {
+  name: string;
+}
+
+interface SpotifyImage {
+  url: string;
+}
+
+interface SpotifyAlbum {
+  name: string;
+  images: SpotifyImage[];
+}
+
+interface SpotifyExternalUrls {
+  spotify: string;
+}
+
+interface SpotifyItem {
+  name: string;
+  artists: SpotifyArtist[];
+  album: SpotifyAlbum;
+  external_urls: SpotifyExternalUrls;
+  duration_ms: number;
+}
+
+interface SpotifyApiResponse {
+  is_playing: boolean;
+  item: SpotifyItem;
+  progress_ms: number;
+}
+
 
 const {
   SPOTIFY_CLIENT_ID: client_id,
@@ -41,20 +75,19 @@ export async function GET() {
   });
   
   if (response.status === 204 || response.status > 400) {
-    // This happens when no song is playing.
     return NextResponse.json({ isPlaying: false });
   }
 
-  const song = await response.json();
+  const song: SpotifyApiResponse = await response.json();
   
-  // Handle cases where the response is not as expected
   if (!song || !song.item) {
      return NextResponse.json({ isPlaying: false });
   }
 
   const isPlaying = song.is_playing;
   const title = song.item.name;
-  const artist = song.item.artists.map((_artist: any) => _artist.name).join(', ');
+  // FIXED: Replaced 'any' with the specific 'SpotifyArtist' type.
+  const artist = song.item.artists.map((_artist: SpotifyArtist) => _artist.name).join(', ');
   const album = song.item.album.name;
   const albumImageUrl = song.item.album.images[0].url;
   const songUrl = song.item.external_urls.spotify;
