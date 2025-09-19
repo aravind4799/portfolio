@@ -4,6 +4,7 @@ import querystring from 'querystring';
 // =================================================================================
 // TypeScript Interfaces for Spotify API responses
 // =================================================================================
+
 interface SpotifyArtist {
   name: string;
 }
