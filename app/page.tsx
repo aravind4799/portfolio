@@ -1,7 +1,44 @@
 'use client'; 
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Github, Linkedin, Code, Calculator, Bot, Building, Play, Pause, SkipForward, SkipBack } from 'lucide-react';
+// UPDATED: Removed unused icons that were causing warnings
+import { Github, Linkedin, Code, Calculator, Bot, Building } from 'lucide-react';
+// UPDATED: Imported the Next.js Image component
+import Image from 'next/image';
+
+// =================================================================================
+// TypeScript Interfaces for type safety
+// =================================================================================
+interface Star {
+  radius: number;
+  distanceFromCenter: number;
+  angle: number;
+  speed: number;
+  parallax: number;
+  opacity: number;
+  twinkleSpeed: number;
+}
+
+interface Comet {
+  x: number;
+  y: number;
+  angle: number;
+  speed: number;
+  length: number;
+  life: number;
+}
+
+interface SpotifySong {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  album: string;
+  albumImageUrl: string;
+  songUrl: string;
+  progress: number;
+  duration: number;
+}
+
 
 // =================================================================================
 // Custom Hook for Scroll Animations
@@ -36,7 +73,6 @@ const useScrollFadeIn = () => {
     };
   }, []);
 
-  // FIXED: Added 'as const' to ensure TypeScript infers a specific tuple type
   return [ref, isVisible] as const;
 };
 
@@ -53,10 +89,10 @@ const StarryBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let stars: any[] = [];
-    let comets: any[] = [];
-    let mouse = { x: null as number | null, y: null as number | null };
-    let center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let stars: Star[] = [];
+    const comets: Comet[] = [];
+    const mouse = { x: null as number | null, y: null as number | null };
+    const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
@@ -229,7 +265,7 @@ const Home = () => {
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl md:text-5xl font-bold">Aravind</h1>
           <div>
-            <p className="text-base md:text-lg text-gray-300">CS Master's @ Purdue University</p>
+            <p className="text-base md:text-lg text-gray-300">CS Master&apos;s @ Purdue University</p>
             <div className="flex items-center gap-2 text-base md:text-lg text-gray-300 mt-1">
               <span>Oracle Certified Java developer</span>
             </div>
@@ -253,7 +289,7 @@ const Home = () => {
 // Custom Hook to fetch Spotify Data
 // =================================================================================
 const useNowPlaying = () => {
-    const [song, setSong] = useState<any>(null);
+    const [song, setSong] = useState<SpotifySong | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -300,16 +336,17 @@ const About = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="md:col-span-2 text-lg text-gray-300 space-y-4">
-            <p>I'm a passionate Java Full Stack Developer, currently pursuing my Master's in Computer Science at Purdue University. My journey in tech has taken me from LTIMindtree in India to Hartford Financial Services in the USA, where I've specialized in modernizing systems.</p>
-            <p>Beyond the code, I believe music is the shorthand of emotion. It's the soundtrack to late-night coding sessions and the creative fuel for solving complex problems.</p>
+            <p>I&apos;m a passionate Java Full Stack Developer, currently pursuing my Master&apos;s in Computer Science at Purdue University. My journey in tech has taken me from LTIMindtree in India to Hartford Financial Services in the USA, where I&apos;ve specialized in modernizing systems.</p>
+            <p>Beyond the code, I believe music is the shorthand of emotion. It&apos;s the soundtrack to late-night coding sessions and the creative fuel for solving complex problems.</p>
           </div>
 
           <div className="w-full flex flex-col items-center gap-6">
-            <img 
+            <Image 
               src="/my_image.jpg" 
-              alt="Aravind Kumar" 
+              alt="Aravind Kumar"
+              width={192}
+              height={192}
               className="w-48 h-48 rounded-full border-4 border-cyan-400 object-cover shadow-lg shadow-cyan-500/20"
-              onError={(e: any) => { e.target.onerror = null; e.target.src='https://placehold.co/192x192/111827/7dd3fc?text=Me'; }}
             />
             
             <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 w-full max-w-sm">
@@ -323,7 +360,7 @@ const About = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <a href={song.songUrl} target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-slate-700 rounded-md flex-shrink-0">
-                       <img src={song.albumImageUrl} alt={song.album} className="rounded-md w-full h-full object-cover" />
+                       <Image src={song.albumImageUrl} alt={song.album} width={64} height={64} className="rounded-md w-full h-full object-cover" />
                     </a>
                     <div className="truncate">
                       <p className="font-bold text-white truncate">{song.title}</p>
@@ -331,8 +368,8 @@ const About = () => {
                     </div>
                     <div className="flex items-end h-6 gap-0.5 ml-auto">
                         <span className="w-1 bg-cyan-400 animate-[bounce_1s_ease-in-out_infinite]"></span>
-                        <span className="w-1 bg-cyan-400 animate-[bounce_1.2s_ease_in_out_infinite]"></span>
-                        <span className="w-1 bg-cyan-400 animate-[bounce_0.8s_ease_in_out_infinite]"></span>
+                        <span className="w-1 bg-cyan-400 animate-[bounce_1.2s_ease-in-out_infinite]"></span>
+                        <span className="w-1 bg-cyan-400 animate-[bounce_0.8s_ease_in-out_infinite]"></span>
                     </div>
                   </div>
                   <div className="w-full bg-gray-600 rounded-full h-1.5 mt-3">
@@ -340,7 +377,7 @@ const About = () => {
                   </div>
                 </>
               ) : (
-                <div className="text-center text-gray-400">Not currently playing music on Spotify.</div>
+                <div className="text-center text-gray-400">Not currently playing on Spotify.</div>
               )}
             </div>
           </div>
@@ -420,4 +457,3 @@ export default function App() {
     </div>
   );
 }
-
