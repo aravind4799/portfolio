@@ -332,10 +332,16 @@ const About = () => {
         <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">About Me</h2>
         <div className="w-24 h-1 bg-cyan-400 mx-auto mb-12"></div>
         
-        {/* UPDATED: Changed to a 2-column grid layout */}
+        {/* UPDATED: Swapped the order of the columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
-          {/* Left Column: Image and Spotify Player */}
+          {/* Left Column: Bio */}
+          <div className="text-lg text-gray-300 space-y-4 text-center md:text-left">
+            <p>I&apos;m a passionate Java Full Stack Developer, currently pursuing my Master&apos;s in Computer Science at Purdue University. My journey in tech has taken me from LTIMindtree in India to Hartford Financial Services in the USA, where I&apos;ve specialized in modernizing systems.</p>
+            <p>Beyond the code, I believe music is the shorthand of emotion. It&apos;s the soundtrack to late-night coding sessions and the creative fuel for solving complex problems.</p>
+          </div>
+
+          {/* Right Column: Image and Spotify Player */}
           <div className="w-full flex flex-col items-center gap-6">
             <Image 
               src="/my_pic.jpeg" 
@@ -376,13 +382,6 @@ const About = () => {
               )}
             </div>
           </div>
-          
-          {/* Right Column: Bio */}
-          <div className="text-lg text-gray-300 space-y-4 text-center md:text-left">
-            <p>I&apos;m a passionate Java Full Stack Developer, currently pursuing my Master&apos;s in Computer Science at Purdue University. My journey in tech has taken me from LTIMindtree in India to Hartford Financial Services in the USA, where I&apos;ve specialized in modernizing systems.</p>
-            <p>Beyond the code, I believe music is the shorthand of emotion. It&apos;s the soundtrack to late-night coding sessions and the creative fuel for solving complex problems.</p>
-          </div>
-
         </div>
       </div>
     </section>
