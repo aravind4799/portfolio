@@ -42,7 +42,6 @@ export interface MediumArticle {
 
 export interface ProjectType {
   title: string;
-  image: string;
   technologies: string[];
   description: string;
   repoUrl: string;

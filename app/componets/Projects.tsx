@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useScrollFadeIn } from '../hooks/useScrollFadeIn';
 import { ArrowUpRight, Github } from 'lucide-react';
-import Image from 'next/image';
 import { ProjectType } from '../lib/types';
 
 const projects: ProjectType[] = [
