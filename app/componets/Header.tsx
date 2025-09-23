@@ -40,9 +40,9 @@ const Header = () => {
       <div className={`md:hidden fixed inset-0 h-screen bg-gray-950/95 backdrop-blur-sm transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col items-center justify-center h-full space-y-8 font-mono uppercase">
           <a href="#home" onClick={() => setIsOpen(false)} className="text-2xl hover:text-cyan-400 transition-colors tracking-widest">Home</a>
-          <a href="#about" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition-colors tracking-widest">About</a>
+          <a href="#about" onClick={() => setIsOpen(false)} className="text-2xl hover:text-cyan-400 transition-colors tracking-widest">About</a>
           <a href="#projects" onClick={() => setIsOpen(false)} className="text-2xl hover:text-cyan-400 transition-colors tracking-widest">Projects</a>
-          <a href="#blogs" onClick={() => setIsOpen(false)} className="text-xl hover:text-cyan-400 transition-colors tracking-widest">Blogs</a>
+          <a href="#blogs" onClick={() => setIsOpen(false)} className="text-2xl hover:text-cyan-400 transition-colors tracking-widest">Blogs</a>
           <a href="#contact" onClick={() => setIsOpen(false)} className="text-2xl hover:text-cyan-400 transition-colors tracking-widest">Contact</a>
         </div>
       </div>
