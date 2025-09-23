@@ -4,7 +4,7 @@ import React from 'react';
 import {StarryBackground} from './componets/StarryBackground';
 import {Contact} from './componets/Contact';
 import {Projects} from './componets/Projects';
-import {About} from './componets/About';
+import About from './componets/About';
 import {Home} from './componets/Home';
 import {Header} from './componets/Header';
 
