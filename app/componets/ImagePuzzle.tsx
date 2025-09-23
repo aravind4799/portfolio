@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-
-// Helper function to shuffle an array, making sure it's solvable
+import { Lightbulb } from 'lucide-react'; 
 const shuffleArray = (array: number[]) => {
   const newArray = [...array];
   let inversions = 0;
+  // Fisher-Yates shuffle
   for (let i = newArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
@@ -30,12 +30,12 @@ const shuffleArray = (array: number[]) => {
   return newArray;
 };
 
-// Define correctOrder outside the component to make it a stable constant.
 const correctOrder = Array.from({ length: 9 }, (_, i) => i);
 
 const ImagePuzzle = () => {
   const [pieces, setPieces] = useState(correctOrder);
   const [solved, setSolved] = useState(false);
+  const [showTip, setShowTip] = useState(false);
 
   const shufflePuzzle = useCallback(() => {
     let shuffled;
@@ -45,6 +45,7 @@ const ImagePuzzle = () => {
 
     setPieces(shuffled);
     setSolved(false);
+    setShowTip(false); 
   }, []); 
   
   useEffect(() => {
@@ -85,6 +86,7 @@ const ImagePuzzle = () => {
         className="relative grid grid-cols-3 gap-1 bg-slate-700 p-1 rounded-md"
         style={{ width: puzzleSize, height: puzzleSize }}
       >
+        
         {pieces.map((id, index) => {
           const isVisible = id !== 8;
           return (
@@ -113,17 +115,28 @@ const ImagePuzzle = () => {
           ></div>
         )}
       </div>
-      <div className="mt-4 text-center min-h-[4.5rem]">
+      <div className="mt-4 text-center min-h-[4.5rem] w-full">
         {solved ? (
           <div className="transition-opacity duration-500 text-center">
             <h3 className="text-2xl font-bold text-cyan-400 animate-pulse">Solved!</h3>
+             <button onClick={shufflePuzzle} className="mt-2 bg-cyan-500 text-black px-4 py-1 rounded-md hover:bg-cyan-400 transition-colors text-sm">
+                Play Again
+            </button>
           </div>
         ) : (
           <div>
             <button onClick={shufflePuzzle} className="bg-slate-800 text-cyan-400 border border-slate-700 px-4 py-2 rounded-md hover:bg-slate-700 transition-colors">
               Shuffle
             </button>
-            <p className="text-xs text-gray-400 mt-2 italic">Tip: Try to solve one row at a time!</p>
+            <div className="mt-3 text-xs text-gray-400">
+                <button onClick={() => setShowTip(!showTip)} className="flex items-center gap-1 mx-auto hover:text-cyan-400">
+                    <Lightbulb size={14} />
+                    <span>Hint</span>
+                </button>
+                {showTip && (
+                    <p className="mt-1 italic">Try to solve one row at a time!</p>
+                )}
+            </div>
           </div>
         )}
       </div>

@@ -27,3 +27,24 @@ export interface SpotifySong {
   progress: number;
   duration: number;
 }
+
+export interface MediumArticle {
+  title: string;
+  pubDate: string;
+  link: string;
+  guid: string;
+  author: string;
+  thumbnail: string;
+  description: string;
+  content: string;
+  categories: string[];
+}
+
+export interface ProjectType {
+  title: string;
+  image: string;
+  technologies: string[];
+  description: string;
+  repoUrl: string;
+  liveUrl?: string;
+}

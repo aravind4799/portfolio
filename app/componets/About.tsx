@@ -22,35 +22,36 @@ const About = () => {
           
           <div className="w-full flex flex-col items-center justify-center gap-8">
             <ImagePuzzle />
-     
             
             <div className={`bg-slate-800/50 border border-slate-700 rounded-lg p-3 w-full max-w-sm transition-transform duration-300 ${song && song.isPlaying ? 'animate-boom-box' : ''}`}>
                 {loading ? (
                   <div className="text-center text-gray-400 h-[72px] flex items-center justify-center text-sm">Loading Spotify...</div>
                 ) : song && song.isPlaying ? (
-                  <>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-green-400 text-sm">Now Playing</span>
+                    </div>
                     <div className="flex items-center gap-3">
-                      <a href={song.songUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-700 rounded-md flex-shrink-0">
-                         <Image src={song.albumImageUrl} alt={song.album} width={48} height={48} className="rounded-md w-full h-full object-cover" />
+                      <a href={song.songUrl} target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-slate-700 rounded-md flex-shrink-0">
+                         <Image src={song.albumImageUrl} alt={song.album} width={56} height={56} className="rounded-md w-full h-full object-cover" />
                       </a>
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                          <p className="font-bold text-white truncate text-sm">{song.title}</p>
-                        </div>
-                        <p className="text-xs text-gray-400 truncate">{song.artist}</p>
+                        <p className="font-bold text-white truncate text-base">{song.title}</p>
+                        <p className="text-sm text-gray-400 truncate">{song.artist}</p>
                       </div>
                     </div>
                     <div className="w-full bg-gray-600 rounded-full h-1 mt-2">
                       <div className="bg-cyan-400 h-1 rounded-full" style={{ width: `${progressPercent}%` }}></div>
                     </div>
-                  </>
+                  </div>
                 ) : (
                    <div className="text-center text-gray-400 h-[72px] flex items-center justify-center text-sm">Not currently playing on Spotify.</div>
                 )}
             </div>
           </div>
           
+          {/* Right Column: Bio */}
           <div className="text-lg text-gray-300 space-y-6">
             <p>
               As you can probably tell, I have a thing for puzzles—whether it&apos;s sliding tiles or untangling a tricky microservice architecture. I herd microservices for a living: I build them in Spring Boot, dress them up in React, and pack them into Docker boxes so Kubernetes can babysit. If something crashes, I bribe it with more YAML.

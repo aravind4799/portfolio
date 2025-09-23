@@ -27,6 +27,7 @@ const Header = () => {
           <a href="#home" className="hover:text-cyan-400 transition-colors uppercase tracking-widest">Home</a>
           <a href="#about" className="hover:text-cyan-400 transition-colors uppercase tracking-widest">About</a>
           <a href="#projects" className="hover:text-cyan-400 transition-colors uppercase tracking-widest">Projects</a>
+          <a href="#blogs" className="hover:text-cyan-400 transition-colors uppercase tracking-widest">Blogs</a>
           <a href="#contact" className="hover:text-cyan-400 transition-colors uppercase tracking-widest">Contact</a>
         </div>
         <div className="md:hidden ml-auto z-50">
@@ -40,6 +41,7 @@ const Header = () => {
         <div className="flex flex-col items-center justify-center h-full space-y-8 font-mono uppercase">
           <a href="#home" onClick={() => setIsOpen(false)} className="text-3xl hover:text-cyan-400 transition-colors tracking-widest">Home</a>
           <a href="#about" onClick={() => setIsOpen(false)} className="text-3xl hover:text-cyan-400 transition-colors tracking-widest">About</a>
+          <a href="#projects" onClick={() => setIsOpen(false)} className="text-3xl hover:text-cyan-400 transition-colors tracking-widest">Projects</a>
           <a href="#projects" onClick={() => setIsOpen(false)} className="text-3xl hover:text-cyan-400 transition-colors tracking-widest">Projects</a>
           <a href="#contact" onClick={() => setIsOpen(false)} className="text-3xl hover:text-cyan-400 transition-colors tracking-widest">Contact</a>
         </div>

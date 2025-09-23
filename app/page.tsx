@@ -2,11 +2,12 @@
 
 import React from 'react';
 import {StarryBackground} from './componets/StarryBackground';
-import {Contact} from './componets/Contact';
-import {Projects} from './componets/Projects';
+import Contact from './componets/Contact';
+import Projects from './componets/Projects';
 import About from './componets/About';
-import {Home} from './componets/Home';
+import Home from './componets/Home';
 import {Header} from './componets/Header';
+import Blogs from './componets/Blog';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Home />
         <About />
         <Projects />
+        <Blogs/>
         <Contact />
       </main>
     </div>
