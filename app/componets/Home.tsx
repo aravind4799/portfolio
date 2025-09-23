@@ -25,17 +25,17 @@ const Home = () => {
   return (
     <section id="home" className="relative h-screen w-screen flex items-center justify-center text-white p-4 overflow-hidden">
       <div className="relative z-10 flex items-center justify-center gap-8 md:gap-12 mb-20">
-        <div className="group relative cursor-pointer transition-transform duration-300 hover:scale-110 font-mono">
+        <div className="group relative cursor-pointer transition-transform duration-300 hover:scale-110 font-display">
           <span className="text-9xl md:text-[10rem]  font-bold text-cyan-800 absolute top-2 left-2 -z-20 transition-all duration-300 ease-in-out group-hover:-translate-y-4 group-hover:-translate-x-4">A</span>
           <span className="text-9xl md:text-[10rem]  font-bold text-cyan-600 absolute top-1 left-1 -z-10 transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:-translate-x-2">A</span>
           <span className="text-9xl md:text-[10rem]  font-bold text-cyan-400 relative z-10">A</span>
         </div>
         <div className="w-0.5 h-28 md:h-40 bg-gray-400"></div>
         <div className="flex flex-col gap-4">
-          <h1 className="text-4xl md:text-6xl font-display font-bold font-sans">Aravind K</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold">Aravind K</h1>
           <div className="font-mono">
-            <p className="text-lg md:text-xl text-gray-300">CS Master&apos;s @ Purdue University</p>
-            <div className="flex items-center gap-2 text-lg md:text-xl text-gray-300 mt-1">
+            <p className="text-lg md:text-xl text-gray-300 font-mono">CS Master&apos;s @ Purdue University</p>
+            <div className="flex items-center gap-2 text-lg md:text-xl text-gray-300 mt-1 font-mono">
               <span>Oracle Certified Java developer</span>
             </div>
           </div>

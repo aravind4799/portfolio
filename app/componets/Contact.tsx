@@ -20,10 +20,10 @@ const Contact = () => {
   const mailtoLink = `mailto:araviku04@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Message from ${formData.name}:\n\n${formData.message}`)}`;
 
   return (
-    <section id="contact" ref={ref} className={`relative min-h-screen bg-gray-950/90 backdrop-blur-sm p-8 flex flex-col justify-center text-white font-mono transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section id="contact" ref={ref} className={`relative min-h-screen p-8 flex flex-col justify-center text-white font-mono transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-5xl md:text-6xl font-bold mb-4">Contact Me</h2>
-          <div className="w-24 h-1 bg-cyan-400 mx-auto mb-12"></div>
+        <h2 className="text-5xl md:text-6xl font-bold font-display mb-4">Contact Me</h2>
+        <div className="w-24 h-1 bg-cyan-400 mx-auto mb-12"></div>
         <p className="text-xl md:text-2xl text-gray-400 mb-12">Have a question or want to work together?</p>
         
         <form className="max-w-xl mx-auto text-left">

@@ -80,9 +80,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" ref={ref} className={`relative min-h-screen bg-gray-950/90 backdrop-blur-sm p-8 py-16 text-white font-mono transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section id="projects" ref={ref} className={`relative min-h-screen p-8 py-16 text-white font-mono transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
        <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-bold mb-4 text-center">Projects</h2>
+        <h2 className="text-5xl md:text-6xl font-bold font-display mb-4 text-center">Projects</h2>
+        <div className="w-24 h-1 bg-cyan-400 mx-auto mb-12"></div>
         <p className="text-xl md:text-2xl text-gray-400 mb-12 text-center">A collection of my works, big and small</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 min-h-[600px]">
